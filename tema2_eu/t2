@@ -1,0 +1,8 @@
+lista(0,[]).
+lista(N,[N|L]):- N>0, R is N-1, lista(R,L).
+
+diff([_],_).
+diff([],_).
+diff([A|Q],V):- Q=[B|_], abs(A-B)>=V, diff(Q,V).
+
+permut(N, V, L):- lista(N,LI), permutation(LI,L), diff(L,V).

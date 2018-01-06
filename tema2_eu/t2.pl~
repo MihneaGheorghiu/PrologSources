@@ -1,0 +1,19 @@
+%PROB 4
+
+%definim culorile
+culoare(1).
+culoare(2).
+culoare(3).
+culoare(4).
+
+%genereaza un sir de culori
+gen(0, []).
+gen(N, [C|L]):- N>0, culoare(C), R is N-1, gen(R, L).
+
+%verifica daca un sir de culori e bun
+check(_,_,[]).
+check(N, L, [[A,B]|V]):- I1 is N-A+1, I2 is N-B+1,
+	nth1(I1,L,C1), nth1(I2,L,C2), C1\=C2, check(N,L,V).
+
+harta(N, Vecini, Culori):- gen(N, L), check(N, L, Vecini), 
+reverse(L,Culori).
