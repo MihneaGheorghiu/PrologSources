@@ -1,0 +1,3 @@
+inversare([],[]).
+inversare([H|R],L):-inversare(T,R),append(R,H,L).
+
