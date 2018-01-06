@@ -1,0 +1,10 @@
+reuniune(L,[],L).
+reuniune([],L,L).
+reuniune([H1|T1],L2,[H1|L3]):- not(member(H1,L2)), reuniune(T1,L2,L3).
+reuniune([H1|T1],L2,L3):- member(H1,L2), reuniune(T1,L2,L3).
+
+intersectie(L,[],[]).
+intersectie([],L,[]).
+intersectie([H1|T1],L2,[H1|L3]):- member(H1,L2), intersectie(T1,L2,L3).
+intersectie([H1|T1],L2,L3):- not(member(H1,L2)), intersectie(T1,L2,L3).
+
